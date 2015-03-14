@@ -1,3 +1,5 @@
+
+
 .slider {
   height: 100%;
   text-align: center;
@@ -29,7 +31,7 @@
 
 /* Empty. Add your own CSS if you like */
 .slides {
-  padding-top: 40px;
+  /*padding-top: 40px;*/
   background-color: #2C3E50;
   height: 100% !important;
   color: white !important;
@@ -37,8 +39,17 @@
 }
 
 .slidecontent {
-  padding-top: 50px;
   padding-bottom: 50px;
+  color: white !important;
+}
+
+.slidecontent h1, h2, h3{
+  color:white;
+  font-family: 'GeosansLight', sans-serif;
+}
+
+h1, h2, h3, h4, h5, p, a {
+  font-family: 'GeosansLight';
 }
 
 

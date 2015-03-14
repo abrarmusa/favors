@@ -1,9 +1,12 @@
 .slider {
   height: 100%;
-  background-color: #2C3E50;
+  text-align: center;
+}
+
+.scroll {
+  height:100%;
 }
 .slider-slide {
-  padding-top: 80px;
   color: white;
   background-color: #fff;
   text-align: center;

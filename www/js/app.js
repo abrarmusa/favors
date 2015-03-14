@@ -18,14 +18,24 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
-  $stateProvider.state('signup', {
-  url: '/signup',
-  views: {
-    signup: {
-      templateUrl: 'templates/signup.html'
+  $stateProvider.state('login', {
+    url: '/login',
+    views: {
+      login: {
+        templateUrl: 'templates/login.html'
+      }
     }
-  }
-})
+  })
+
+
+  $stateProvider.state('signup', {
+    url: '/signup',
+    views: {
+      signup: {
+        templateUrl: 'templates/signup.html'
+      }
+    }
+  })
 
 })
 

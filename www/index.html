@@ -22,6 +22,15 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+        <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+    <script src="http://chancejs.com/chance.min.js"></script>
+    <!-- Firebase Simple Login -->
+    <script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script>
+
   </head>
   <body ng-app="favors">
     <!-- Header of app --> 
@@ -34,7 +43,7 @@
       <ion-tab icon="ion-home" ui-sref="tutorial">
         <ion-nav-view name="tutorial"></ion-nav-view>
       </ion-tab>
-      <ion-tab icon="ion-help" ui-sref="help">
+      <ion-tab icon="ion-signup" ui-sref="signup">
         <ion-nav-view name="help"></ion-nav-view>
       </ion-tab>
   </ion-tabs>

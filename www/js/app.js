@@ -4,7 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('favors', ['ionic'])
-
+var userRef = new Firebase('brilliant-heat-2461.firebaseIO.com/users');
+// ROUTERS
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/')
   
@@ -17,11 +18,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
-  $stateProvider.state('help', {
-  url: '/help',
+  $stateProvider.state('signup', {
+  url: '/signup',
   views: {
-    help: {
-      templateUrl: 'templates/help.html'
+    signup: {
+      templateUrl: 'templates/signup.html'
     }
   }
 })
@@ -42,6 +43,7 @@ app.run(function($ionicPlatform) {
   });
 })
 
+// CONTROLLERS
 app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document) {
   $scope.myActiveSlide = 0;
 
@@ -53,3 +55,38 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
 
 })
 
+.controller('SignupCtrl', function($scope, $ionicModal) {
+  // No need for testing data anymore
+  $scope.users = [];
+
+  // Create and load the Modal
+  $ionicModal.fromTemplateUrl('new-user.html', function(modal) {
+    $scope.userModal = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  // Called when the form is submitted
+  $scope.createUser = function(user) {
+
+    userRef.push({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      password: user.password,
+      email: user.email
+    });
+
+    $scope.userModal.hide();
+  };
+
+  // Open our new task modal
+  $scope.newUser = function() {
+    $scope.userModal.show();
+  };
+
+  // Close the new task modal
+  $scope.closeNewUser = function() {
+    $scope.userModal.hide();
+  };
+});

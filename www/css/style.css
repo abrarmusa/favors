@@ -42,6 +42,19 @@
   height: 100% ;
 }
 
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #F5F9FC;
+  position: absolute;
+  bottom: 44px;
+  z-index: 12; }
+.increment {
+  width: 5%;
+  height: 100%;
+  background: #017AFD;
+  transition: all .75s; }
+
 .backgroundcolor {
   background-color: #2C3E50;
 }

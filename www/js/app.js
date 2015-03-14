@@ -19,7 +19,7 @@ angular.module('favors', ['ionic'])
 })
 
 .controller('SlideController', function($scope) {
-  
   $scope.myActiveSlide = 0;
   
 })
+

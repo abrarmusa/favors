@@ -18,8 +18,14 @@ angular.module('favors', ['ionic'])
   });
 })
 
-.controller('SlideController', function($scope) {
+.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document) {
   $scope.myActiveSlide = 0;
-  
+
+  $scope.slideChanged = function(index) {
+    var slides = $ionicSlideBoxDelegate.slidesCount();
+    var increment = $document[0].getElementsByClassName('increment');
+    increment[0].style.width = (1+19*index/(slides-1))*5+'%';
+  }; 
+
 })
 

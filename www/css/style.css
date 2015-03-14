@@ -47,8 +47,9 @@
   height: 4px;
   background: #F5F9FC;
   position: absolute;
-  bottom: 44px;
-  z-index: 12; }
+  bottom: 0px;
+  z-index: 12;
+}
 .increment {
   width: 5%;
   height: 100%;

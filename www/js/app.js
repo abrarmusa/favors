@@ -17,6 +17,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
+  $stateProvider.state('login', {
+    url: '/login',
+    views: {
+      login: {
+        templateUrl: 'templates/login.html'
+      }
+    }
+  })
+
+
   $stateProvider.state('help', {
   url: '/help',
   views: {

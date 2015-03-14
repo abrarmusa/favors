@@ -8,11 +8,11 @@ var app = angular.module('favors', ['ionic'])
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/')
   
-  $stateProvider.state('new', {
-    url: '/new',
+  $stateProvider.state('tutorial', {
+    url: '/tutorial',
     views: {
-      new: {
-        templateUrl: 'templates/new.html'
+      tutorial: {
+        templateUrl: 'templates/tutorial.html'
       }
     }
   })

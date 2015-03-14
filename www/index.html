@@ -25,14 +25,15 @@
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">Favors</h1>
       </ion-header-bar>
       <ion-content class="backgroundcolor">
         <div animation="slide-left-right-ios7" ng-controller="SlideController">
-          <ion-slide-box active-slide="myActiveSlide">
-            <ion-slide class="firstslide">
-              <div class="box firstslide ">
-              <h1> HELLO</h1>
+          <ion-slide-box active-slide="myActiveSlide" show-pager="true">
+            <ion-slide class="slides">
+              <div class="slidecontent">
+              <img src="/img/favorslogo.png" class="logo">
+              <img src="/img/favorsname.png" class="logo">
               <p>aslkdnalksd aslkfnslkdfna l;masdlfkasdlfknasdlf makldsmflkas</p>
               </div>
             </ion-slide>
@@ -43,10 +44,11 @@
               <div class="box pink"><h1>PINK</h1></div>
             </ion-slide>
           </ion-slide-box>
-        </div>  
+        </div> 
+    </ion-content>
   </body>
 
-      </ion-content>
+      
     </ion-pane>
   </body>
 </html>

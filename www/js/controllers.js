@@ -90,6 +90,13 @@ app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $s
   };
 })
 
+app.controller('MainMyJobsController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
+    $scope.goToHome = function(){
+      $ionicHistory.goBack();
+  };
+})
+
+
 app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
   $scope.goToHome = function(){
     $ionicHistory.goBack();

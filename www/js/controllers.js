@@ -104,7 +104,7 @@ app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $s
 
       var user = auth.getUser();
       if (user.userId == undefined){
-        alert("You must be logged in to create a job")''
+        alert("You must be logged in to create a job");
       }
       else{
         FirebaseApi.addJob({"title" : title ,"description" : description, "creatorUserId" : user.userId, "spotsAvailable" : spotsAvailable, "tagIds" : tags});

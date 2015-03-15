@@ -31,13 +31,12 @@ h1.form {
 }
 
 .sidenavstyle {
-  background: #1C2A38;
+  background: #0c63ee;
   font-family: 'GeosansLight', sans-serif;
   color:white;
   border-bottom: 0px;
 }
 .sidenavstyle h1{
-  background: #1C2A38;
   font-family: 'GeosansLight', sans-serif;
   color:white;
   text-align: center !important;
@@ -77,7 +76,7 @@ h1.form {
   padding-top:44px;
 }
 .pane {
-  background-color: #293E51;
+  background-color: #2C3E50;
 }
 
 .loginform {
@@ -145,7 +144,7 @@ td-cards {
 .index-button {
   margin:5px;
   height:185px;
-  background-color: #1A2A39;
+  background-color: #0c63ee;
   color: white;
   border-radius: 10px;
   border: 0px;

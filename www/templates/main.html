@@ -1,17 +1,30 @@
  <ion-pane ng-controller="MainController">
     <div class="bar bar-header sidenavstyle">
-      <h1 class="title">Jobs</h1>
+      <h1 class="title">Main</h1>
     </div>
             
-        <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>  
-<button class="button button-clear button-positive" ng-click="go('prefs')">
-  Preferences
+        <br>   <br>   <br>   <br> <br> 
+<div class="col-100" style="margin-right:20px;">
+<div class="row">
+  <button class=" col col-50 button button-positive index-button" ng-click="go('prefs')">
+    <i class="icon ion-home"></i>
+    Set Preferences
+  </button>
+  <button class="col col-50 button button-positive index-button" ng-click="go('jobs')">
+    <i class="icon ion-home"></i>
+    Jobs
+  </button>
+</div>
+<div class="row">
+<button class="col col-50 button button-positive index-button" ng-click="go('cards')">
+  <i class="icon ion-home"></i>
+  Search for Jobs
 </button>
-<button class="button button-clear button-positive" ng-click="go('jobs')">
-  Jobs
-</button>
-<button class="button button-clear button-positive" ng-click="go('cards')">
+<button class="col col-50 button button-positive index-button" ng-click="go('cards')">
+  <i class="icon ion-home"></i>
   Cards
 </button>
+</div>
+</div>
      
  </ion-pane>

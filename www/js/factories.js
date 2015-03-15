@@ -12,18 +12,7 @@ app.factory("auth",function($state, $timeout){
         email: email
       });
       user = addUser(newuser);
-      console.log('resp:', user);
-    },
-    /**
-     * Require a controller to be authenticated, or send visitor to
-     * another state.
-     */
-    required: function() {
-      if (!user) {
-        $timeout(function() {
-         $state.go('login');
-        });
-      }
+      $state.go('tutorial');
     }
   }
 })

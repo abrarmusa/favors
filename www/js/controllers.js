@@ -24,10 +24,6 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
   // Called when the form is submitted
   $scope.createUser = auth.createUser;
 
-  $scope.checkUser = function() {
-  console.log('User stored as ', auth.getUser()); 
-  }
-
   // Open our new task modal
   $scope.newUser = function() {
     $scope.userModal.show();

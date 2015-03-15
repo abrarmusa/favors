@@ -53,7 +53,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
     if (toState.authRequired && !auth.getUser()) {
-      window.location.href = '#/login';
+      $state.go('login', {}, {reload: true});
       e.preventDefault();
     }
   });

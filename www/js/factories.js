@@ -22,7 +22,7 @@ app.factory("auth",function($state, $timeout, FirebaseApi, $ionicPopup){
 
     },
 
-    createUser: function(firstName, lastName, password, email) {
+    createUser: function(firstName, lastName, email, password) {
       var newuser = ({
         firstName: firstName,
         lastName: lastName,

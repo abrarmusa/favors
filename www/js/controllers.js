@@ -5,20 +5,21 @@ app.controller('SignupCtrl', function($scope, $location, $state, auth) {
   // // Called when the form is submitted
   $scope.createUser = auth.createUser;
 
-  $scope.getUser = auth.getUser;
-  
+ 
+
   $scope.goToMain = function() {
     $state.go('main');
   }
 
 })
 
-app.controller('LoginController', function($scope, $location, $state) {
+app.controller('LoginController', function($scope, $location, $state, auth) {
 
   $scope.goToTutorial = function() {
     $state.go('tutorial');
   }
 
+  $scope.getUser = auth.getUser;
 
   $scope.goToMain = function() {
     $state.go('main');

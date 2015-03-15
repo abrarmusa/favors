@@ -8,10 +8,10 @@
             
       <div class="list">
         <label class="item item-input center">
-          <input type="text" placeholder="Email">
+          <input type="text" ng-model="email" placeholder="Email">
         </label>
         <label class="item item-input center">
-          <input type="text" placeholder="Password">
+          <input type="text" ng-model="password" placeholder="Password">
         </label>
         
         <br> 
@@ -21,7 +21,7 @@
 
 
 
-        <button class="button button-positive" ng-click="goToMain()">
+        <button class="button button-positive" ng-click="getUser(email, password)">
          Sign in
         </button>
         </center>

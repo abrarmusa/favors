@@ -8,7 +8,7 @@ app.factory("auth",function($state, $timeout, FirebaseApi){
         password: password
       });
       FirebaseApi.getUser(email).then(function(recuser){
-        if (user != "no user found"){
+        if (user != "no user found" && user != null){
           if (recuser.password == usercopy.password){
             var user = recuser;
             $state.go('main');

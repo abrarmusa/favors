@@ -6,14 +6,15 @@
 var app = angular.module('favors', ['ionic'])
 // ROUTERS
 app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/login')
   
   $stateProvider.state('tutorial', {
     url: '/tutorial',
     authRequired: true,
     views: {
       tutorial: {
-        templateUrl: 'templates/tutorial.html'
+        templateUrl: 'templates/tutorial.html',
+        controller: 'SlideController'
       }
     }
   })
@@ -22,7 +23,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/login',
     views: {
       login: {
-        templateUrl: 'templates/login.html'
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController'
       }
     }
   })
@@ -31,10 +33,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/signup',
     views: {
       signup: {
-        templateUrl: 'templates/signup.html'
+        templateUrl: 'templates/signup.html',
+        controller: 'SignupCtrl'
       }
     }
   })
+
 
 })
 

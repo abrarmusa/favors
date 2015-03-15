@@ -2,58 +2,16 @@
     <div class="bar bar-header sidenavstyle">
       <h1 class="title">Jobs</h1>
     </div>
-             
-
-          <!-- Cards -->
-
-          <td-cards>
-              <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
-              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
-              on-partial-swipe="cardPartialSwipe(amt)">
-                  <div class="title">
-                      <!-- {{card.title}} -->
-
-                      <h1>Sarah Jane</h1>
-                  </div>
-                  <div class="image">
-                      <div class="no-text overlayBox"><div class="noBox boxed">Trash</div></div>
-                      <img ng-src="{{card.image}}">
-
-                      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Save</div></div>
-                  </div>
-                  <div>
-                    <h1>I make fences<h1>
-                  </div>
-              </td-card>
-          </td-cards>
-          
-  <ion-side-menus>
-    <ion-side-menu-content>
-    </ion-side-menu-content>
-
-    <ion-side-menu side="left">
-
-        <ion-content scroll="false" has-header="true" class="top44 sidemenustyle">
-                <header class="bar bar-header sidenavstyle">
-                    <div class="title">Menu</div>
-                </header>
-            <ul class="list">
-                 <label class="item item-input item-stacked-label">
-                  <input type="text" placeholder=" Search">
-                </label>
-
-                <a href="#/main/jobs" class="item">
-                <i class="icon ion-hammer"></i>
-                My jobs
-                </a>
-                <a ui-sref="main.tabs" class="item" ng-click="toggleMenu()">
-                <i class="icon ion-gear-b"></i>
-                Set your preferences
-                </a>
-            </ul>
-        </ion-content>
-    </ion-side-menu>
-
-  </ion-side-menus>
+            
+        <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>   <br>  
+<button class="button button-clear button-positive" ng-click="go('prefs')">
+  Preferences
+</button>
+<button class="button button-clear button-positive" ng-click="go('jobs')">
+  Jobs
+</button>
+<button class="button button-clear button-positive" ng-click="go('cards')">
+  Cards
+</button>
      
  </ion-pane>

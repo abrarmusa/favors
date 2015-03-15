@@ -22,8 +22,14 @@ app.controller('LoginController', function($scope, $location, $state, auth) {
 })
 
 
-app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
-  var cardTypes = [
+app.controller('MainController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+  $scope.go = function(path) {
+    $state.go(path);
+  }
+})
+
+app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+ var cardTypes = [
     { image: 'img/favorsname.png' },
     { image: 'img/formlogo.png' },
     { image: 'img/job.png'}
@@ -55,12 +61,16 @@ app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
-  
-  $scope.go = function(path) {
-    $state.go(path);
-  }
+})
+
+app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
 
 })
+
+app.controller('MainPrefsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+
+})
+
 
 // CONTROLLERS
 app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {

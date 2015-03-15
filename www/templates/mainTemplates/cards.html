@@ -1,2 +1,23 @@
 <ion-pane ng-controller="MainCardsController">
+	     <td-cards>
+              <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
+              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+              on-partial-swipe="cardPartialSwipe(amt)">
+                  <div class="title">
+                      <!-- {{card.title}} -->
+
+                      <h1>Sarah Jane</h1>
+                  </div>
+                  <div class="image">
+                      <div class="no-text overlayBox"><div class="noBox boxed">Trash</div></div>
+                      <img ng-src="{{card.image}}">
+
+                      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Save</div></div>
+                  </div>
+                  <div>
+                    <h1>I make fences<h1>
+                  </div>
+              </td-card>
+          </td-cards>
 </ion-pane>
+

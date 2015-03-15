@@ -34,32 +34,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'MainController'
       // authRequired: true
     })
-  .state('main.cards', {
+
+  .state('cards', {
       url: '/cards',
-      views: {
-        'menuCards' :{
-          templateUrl: 'templates/mainTemplates/cards.html',
-          controller: 'MainCardsController'
-        }
-      }
+      templateUrl: 'templates/mainTemplates/cards.html',
+      controller: 'MainCardsController'
   })
-  .state('main.prefs', {
+  .state('prefs', {
       url: '/prefs',
-      views: {
-        'menuPrefs' :{
-          templateUrl: 'templates/mainTemplates/prefs.html',
-          controller: 'MainPrefsController'
-        }
-      }
+      templateUrl: 'templates/mainTemplates/prefs.html',
+      controller: 'MainPrefsController'
   })
-  .state('main.jobs', {
+  .state('jobs', {
       url: '/jobs',
-      views: {
-        'menuJobs' : {
-          templateUrl: 'templates/mainTemplates/jobs.html',
-          controller: 'MainJobsController'
-        }
-      }
+      templateUrl: 'templates/mainTemplates/jobs.html',
+      controller: 'MainJobsController'
   });
 
 })

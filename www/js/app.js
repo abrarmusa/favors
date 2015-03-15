@@ -32,7 +32,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('tutorial', {
     url: '/tutorial',
-    authRequired: true,
+    // authRequired: true,
     views: {
       'tutorial': {
         templateUrl: 'templates/tutorial.html',

@@ -30,6 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
   .state('main', {
       url: '/main',
+      authRequired: true,
       templateUrl: 'templates/main.html',
       controller: 'MainController'
       // authRequired: true
@@ -37,28 +38,33 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   .state('cards', {
       url: '/cards',
+      authRequired: true,
       templateUrl: 'templates/mainTemplates/cards.html',
       controller: 'MainCardsController'
   })
 
   .state('tags', {
       url: '/tags',
+      authRequired: true,
       templateUrl: 'templates/mainTemplates/tags.html',
       controller: 'TagsController'
   })
 
   .state('pending', {
       url: '/pending',
+      authRequired: true,
       templateUrl: 'templates/mainTemplates/pending.html',
       controller: 'MainPendingController'
   })
   .state('jobs', {
       url: '/jobs',
+      authRequired: true,
       templateUrl: 'templates/mainTemplates/jobs.html',
       controller: 'MainJobsController'
   })
    .state('myjobs', {
       url: '/myjobs',
+      authRequired: true,
       templateUrl: 'templates/mainTemplates/myjobs.html',
       controller: 'MainMyJobsController'
   });

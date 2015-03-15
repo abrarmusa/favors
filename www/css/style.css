@@ -32,6 +32,7 @@ h1.form {
 
 .sidenavstyle {
   background: #446CB3;
+  font-family: 'GeosansLight', sans-serif;
   color:white;
 }
 
@@ -43,7 +44,9 @@ h1.form {
 .sidemenustyle a{
   font-family: 'GeosansLight', sans-serif;
   font-weight: 500;
-  color: #446CB3;
+  color: white;
+  text-align: left;
+  background-color: #446CB3;
 }
 
 .yellow {
@@ -190,4 +193,8 @@ td-card img {
   -webkit-transition: 0.2s opacity linear;
   transition: 0.2s opacity linear;
   opacity: 0;
+}
+
+.bar .title {
+  text-align: left;
 }

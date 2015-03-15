@@ -53,8 +53,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('main', {
       url: '/main',
       templateUrl: 'templates/main.html',
-      controller: 'MainController',
-      authRequired: true
+      controller: 'MainController'
+      // authRequired: true
     });
 
 })

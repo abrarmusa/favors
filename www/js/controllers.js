@@ -19,7 +19,7 @@ app.controller('LoginController', function($scope, $location, $state, auth) {
 
 })
 
-app.controller('MainController', function($scope) {
+app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
   console.log('CARDS CTRL');
   var cardTypes = [
     { image: 'https://pbs.twimg.com/profile_images/546942133496995840/k7JAxvgq.jpeg' },
@@ -27,6 +27,9 @@ app.controller('MainController', function($scope) {
     { image: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg' },
   ];
 
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
   $scope.cards = Array.prototype.slice.call(cardTypes, 0);
 
   $scope.cardDestroyed = function(index) {

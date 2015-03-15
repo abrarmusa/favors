@@ -45,21 +45,32 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'SlideController'
     })
   
-  .state('main', {
-      url: '/main',
-      templateUrl: 'templates/main.html',
-      controller: 'MainController',
-      authRequired: true
-    })
   .state('signup', {
       url: '/signup',
       templateUrl: 'templates/signup.html',
       controller: 'SignupCtrl'
-  });
+  })
+    .state('main', {
+      url: '/main',
+      templateUrl: 'templates/main.html',
+      controller: 'MainController',
+      authRequired: true
+    });
 
 })
 
+app.directive('noScroll', function($document) {
 
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attr) {
+
+      $document.on('touchmove', function(e) {
+        e.preventDefault();
+      });
+    }
+  }
+})
 
 
 

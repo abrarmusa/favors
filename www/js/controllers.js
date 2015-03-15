@@ -1,10 +1,15 @@
-app.controller('SignupCtrl', function($scope, $location, $state) {
+app.controller('SignupCtrl', function($scope, $location, $state, auth) {
   // No need for testing data anymore
   // $scope.users = [];
 
   // // Called when the form is submitted
-  // $scope.createUser = auth.createUser;
- 
+
+  $scope.createUser = auth.createUser;
+  $scope.getUser = auth.getUser;
+  
+  $scope.goToMain = function() {
+    $state.go('main');
+  }
 
 })
 
@@ -68,7 +73,13 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
     $state.go('signup');
   };
 
+})
 
-
+app.controller('FooController', function($scope, FirebaseApi){
+    FirebaseApi.getUser("fe@goenu.io").then(function(user) {
+    console.log(user);
+    });
+    console.log(FirebaseApi.addUser({"firstName" : "John", "lastName" : "Doe", "email" : "johnDoe@gmail.com", "linkedInURL" : "www.linkedin.com/JOhnny"}));
+    console.log(FirebaseApi.addJob({"description" : "Build my house for me.", "creatorUserId" : 101, "spotsAvailable" : 5}));
 })
 

@@ -75,6 +75,7 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
 })
 
 app.controller('FooController', function($scope, FirebaseApi){
+    FirebaseApi.acceptUserForJob(965294, 546046); // accept user 546046 for job id 965294  
     FirebaseApi.getUser("fe@goenu.io").then(function(user) {
     console.log(user);
     });

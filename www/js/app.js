@@ -56,6 +56,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/jobs',
       templateUrl: 'templates/mainTemplates/jobs.html',
       controller: 'MainJobsController'
+  })
+   .state('myjobs', {
+      url: '/myjobs',
+      templateUrl: 'templates/mainTemplates/myjobs.html',
+      controller: 'MainMyJobsController'
   });
 
 })

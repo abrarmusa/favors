@@ -147,7 +147,7 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("/img/create.png") no-repeat center;
+  background:#0c63ee url("../img/create.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
@@ -159,7 +159,7 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("/img/filter.png") no-repeat center;
+  background:#0c63ee url("../img/filter.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
@@ -171,7 +171,7 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("/img/search.png") no-repeat center;
+  background:#0c63ee url("../img/search.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
@@ -183,7 +183,7 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("/img/request.png") no-repeat center;
+  background:#0c63ee url("../img/request.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
@@ -215,7 +215,7 @@ td-card h1{
   
 }
  
-td-card img {
+td-card ../img {
     padding:10px;
     height: 258px;
     width: 100%;
@@ -274,3 +274,12 @@ td-card img {
   text-align: left;
 }
 
+.item-checkbox-right .checkbox input,
+.item-checkbox-right .checkbox-icon {
+  float: right;
+}
+
+.item-checkbox.item-checkbox-right {
+  /*the default item padding*/
+  padding: 15px;
+}

@@ -67,14 +67,22 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
+
+  $scope.goToHome = function(){
+    $state.go('main');
+  };
 })
 
 app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
-
+    $scope.goToHome = function(){
+    $state.go('main');
+  };
 })
 
 app.controller('MainPrefsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
-
+  $scope.goToHome = function(){
+    $state.go('main');
+  };
 })
 
 

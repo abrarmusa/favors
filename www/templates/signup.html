@@ -1,8 +1,4 @@
 <ion-pane>
-
-<ion-header-bar class="bar-positive">
-  <h1 class="title">Sign Up</h1>
-</ion-header-bar>
 <div ng-controller="SignupCtrl" ng-click="checkUser()">
   <ion-content class="loginform padding" scroll="false">
     <center>
@@ -26,7 +22,7 @@
         </label>
           <br>
 
-          <button class="button center button-positive" ng-click="createUser(firstName, lastName, email, password)">
+          <button class="button center button-positive" ng-click="goToMain()">
             Sign Up
           </button>
       </div>

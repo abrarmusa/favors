@@ -29,37 +29,31 @@ app.run(function($ionicPlatform, $rootScope, auth, $state) {
 
 
 app.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-  .state('tutorial', {
-    url: '/tutorial',
-    // authRequired: true,
-    views: {
-      'tutorial': {
-        templateUrl: 'templates/tutorial.html',
-        controller: 'SlideController'
-      }
-    }
-  })
-  .state('login', {
-    url: '/login',
-    views: {
-      'login': {
-        templateUrl: 'templates/login.html',
-        controller: 'LoginController'
-      }
-    }
-  })
-  .state('signup', {
-    url: '/signup',
-    views: {
-      'signup': {
-        templateUrl: 'templates/signup.html',
-        controller: 'SignupCtrl'
-      }
-    }
-  });
-
   $urlRouterProvider.otherwise('/login')
+
+  $stateProvider
+
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginController'
+    })
+  .state('tutorial', {
+      url: '/tutorial',
+      templateUrl: 'templates/tutorial.html',
+      controller: 'SlideController'
+    })
+  
+  .state('main', {
+      url: '/main',
+      templateUrl: 'templates/main.html',
+      controller: 'MainController'
+    })
+  .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/signup.html',
+      controller: 'SignupCtrl'
+  });
 
 })
 

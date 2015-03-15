@@ -1,9 +1,12 @@
-app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
+app.controller('SignupCtrl', function($scope, $location, $state) {
   // No need for testing data anymore
-  $scope.users = [];
+  // $scope.users = [];
 
-  // Called when the form is submitted
-  $scope.createUser = auth.createUser;
+  // // Called when the form is submitted
+  // $scope.createUser = auth.createUser;
+  $scope.goToMain = function() {
+    $state.go('main');
+  }
 
 })
 
@@ -13,6 +16,10 @@ app.controller('LoginController', function($scope, $location, $state) {
     $state.go('tutorial');
   }
 
+
+  $scope.goToMain = function() {
+    $state.go('main');
+  }
   
 })
 
@@ -27,9 +34,10 @@ app.controller('LoginController', function($scope, $location, $state) {
   }; 
 
   $scope.goToSignup = function(){
-    alert("TEST");  
     $state.go('signup');
   };
+
+
 
 })
 

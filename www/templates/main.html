@@ -6,14 +6,15 @@
 
     <!-- Left menu -->
     <ion-side-menu side="left">
-        <header class="bar bar-header bar-assertive">
-            <div class="title">Side Menu</div>
+
+        <ion-content scroll="false" has-header="true" class="top44 sidemenustyle">
+                <header class="bar bar-header sidenavstyle">
+            <div class="title">Menu</div>
         </header>
-        <ion-content scroll="false" has-header="true" class="top45">
             <ul class="list">
-                <a ui-sref="entry" class="item">Back To Entry Page</a>
-                <a ui-sref="main.home" class="item" ng-click="toggleMenu()">Home</a>
-                <a ui-sref="main.tabs" class="item" ng-click="toggleMenu()">Tabs</a>
+                <a ui-sref="entry" class="item">Look for Jobs</a>
+                <a ui-sref="main.home" class="item" ng-click="toggleMenu()">My jobs</a>
+                <a ui-sref="main.tabs" class="item" ng-click="toggleMenu()">Set your preferences</a>
             </ul>
         </ion-content>
     </ion-side-menu>

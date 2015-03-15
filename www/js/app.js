@@ -47,10 +47,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'TagsController'
   })
 
-  .state('prefs', {
-      url: '/prefs',
-      templateUrl: 'templates/mainTemplates/prefs.html',
-      controller: 'MainPrefsController'
+  .state('pending', {
+      url: '/pending',
+      templateUrl: 'templates/mainTemplates/pending.html',
+      controller: 'MainPendingController'
   })
   .state('jobs', {
       url: '/jobs',

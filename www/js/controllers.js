@@ -25,6 +25,7 @@ app.controller('LoginController', function($scope, $location, $state) {
 
 // CONTROLLERS
 .controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {
+
   $scope.myActiveSlide = 0;
 
   $scope.slideChanged = function(index) {
@@ -40,4 +41,12 @@ app.controller('LoginController', function($scope, $location, $state) {
 
 
 })
+
+.controller('FooController', function($scope, FirebaseApi)){
+    FirebaseApi.getUser("fe@goenu.io").then(function(user) {
+    console.log(user);
+    });
+    console.log(FirebaseApi.addUser({"firstName" : "John", "lastName" : "Doe", "email" : "johnDoe@gmail.com", "linkedInURL" : "www.linkedin.com/JOhnny"}));
+    console.log(FirebaseApi.addJob({"description" : "Build my house for me.", "creatorUserId" : 101, "spotsAvailable" : 5}));
+}
 

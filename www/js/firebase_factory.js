@@ -258,7 +258,7 @@ function updateJob(jobId, userId, jobArray, key) {
 
 function updateUser(jobId, userId, jobArray, userArray) {
   for (var key in userArray) {
-    console.log('https://favorsnw.firebaseio.com/' + key);
+    //console.log('https://favorsnw.firebaseio.com/' + key);
     if (userArray[key]["userId"] == userId) {
       console.log(userArray[key]["userId"]);
       var userKey = key;

@@ -2,8 +2,8 @@
   
 
     <div class="bar bar-header sidenavstyle">
-      <button class="button button-positive" ng-click="goToHome()">
-        Home
+      <button class="button icon-left ion-chevron-left button-clear button-positive" ng-click="goToHome()">
+        Back
       </button>
       <h1 class="title">Search for Jobs</h1>
     </div>
@@ -11,7 +11,7 @@
 
 	     <td-cards>
               <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
-              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index, card.jobId)"
               on-partial-swipe="cardPartialSwipe(amt)">
                   <div class="title">
                       <h1>{{card.title}}</h1>

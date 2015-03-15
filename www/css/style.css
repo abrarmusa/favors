@@ -31,12 +31,13 @@ h1.form {
 }
 
 .sidenavstyle {
-  background: #446CB3;
+  background: #1C2A38;
   font-family: 'GeosansLight', sans-serif;
   color:white;
+  border-bottom: 0px;
 }
 .sidenavstyle h1{
-  background: #446CB3;
+  background: #1C2A38;
   font-family: 'GeosansLight', sans-serif;
   color:white;
   text-align: center !important;
@@ -76,7 +77,7 @@ h1.form {
   padding-top:44px;
 }
 .pane {
-  background-color: #2C3E50;
+  background-color: #293E51;
 }
 
 .loginform {
@@ -125,7 +126,7 @@ h1, h2, h3, h4, h5, p, a {
   transition: all .75s; }
 
 .backgroundcolor {
-  background-color: #2C3E50;
+  background-color: #293E51;
 }
 
 .logo {
@@ -144,6 +145,10 @@ td-cards {
 .index-button {
   margin:5px;
   height:185px;
+  background-color: #1A2A39;
+  color: white;
+  border-radius: 10px;
+  border: 0px;
 }
  
 td-card {

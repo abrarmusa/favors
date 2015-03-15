@@ -31,14 +31,16 @@ app.controller('MainController', function($scope, $ionicSideMenuDelegate, $state
 function addCardAsync(jobs, $scope, cardTypes){
   for (var i in jobs){
     var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-    newCard.id = Math.random();
+    newCard.jobId = jobs[i]["jobId"];
     newCard.title = jobs[i]["description"];
     newCard.spotsAvailable = jobs[i]["spotsAvailable"];
     $scope.cards.push(angular.extend({}, newCard));
   }
 }
 
-app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing) {
+
+app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing, $ionicHistory, auth) {
+
  var cardTypes = [
     { image: 'img/favorsname.png' },
     { image: 'img/formlogo.png' },
@@ -58,8 +60,12 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
       console.log('Left swipe');
   }
  
-  $scope.cardSwipedRight = function(index) {
+  $scope.cardSwipedRight = function(index, jobId) {
+      var user = auth.getUser();
       console.log('Right swipe');
+      if (user != undefined){
+        FirebaseApi.applyForJob(jobId, user.userId , function(changedJob, key){});
+      }   
   }
  
   $scope.cardDestroyed = function(index) {
@@ -72,23 +78,23 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
   };
 
   $scope.goToHome = function(){
-    $state.go('main');
+    $ionicHistory.goBack();
   };
 })
 
-app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
     $scope.goToHome = function(){
-    $state.go('main');
+      $ionicHistory.goBack();
   };
 })
 
-app.controller('MainPrefsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
   $scope.goToHome = function(){
-    $state.go('main');
+    $ionicHistory.goBack();
   };
 })
 
-app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state, sharing) {
+app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state, sharing, $ionicHistory) {
 
   $scope.tags = sharing.sharedObject;
 
@@ -103,6 +109,10 @@ app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state
   $scope.go = function(path) {
     $state.go(path);
   }
+
+  $scope.goToHome = function(){
+    $ionicHistory.goBack();
+  };
 
 })
 

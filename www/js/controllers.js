@@ -27,7 +27,8 @@ app.controller('LoginController', function($scope, $location, $state) {
   }; 
 
   $scope.goToSignup = function(){
-    $location.path('/signup');
+    alert("TEST");  
+    $state.go('signup');
   };
 
 })

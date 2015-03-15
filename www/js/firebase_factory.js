@@ -17,26 +17,31 @@ angular.module('firebase.api', [])
       var participantRating = 0;
       var teachingJobs = [];
       var participantJobs = [];
-      var userJson = {"userId" : userId , "firstName" : firstName, "lastName" : lastName, "email" : email, "password" : password, "linkedInURL" : linkedInURL, "teachingRating" : teachingRating, "participantRating" : participantRating, "teachingJobs" : teachingJobs, "participantJobs" : participantJobs};
+      var tagIds = (jobJson["tagIds"] == undefined) ? [] : jobJson["tagIds"];
+      var userJson = {"userId" : userId , "firstName" : firstName, "lastName" : lastName, "email" : email, "password" : password, "linkedInURL" : linkedInURL, "teachingRating" : teachingRating, "participantRating" : participantRating, "teachingJobs" : teachingJobs, "participantJobs" : participantJobs, "tagIds" : tagIds};
 
       userRef.push(userJson);
       return userJson;
     },
     addJob: function(jobJson){
       var jobId = generateRandomJobId();
+      var title = (jobJson["title"] == undefined) ? chance.word() : jobJson["title"];
       var description = (jobJson["description"] == undefined) ? chance.sentence({words: 10}) : jobJson["description"];
       var creatorUserId = (jobJson["creatorUserId"] == undefined) ? generateRandomUserId() : jobJson["creatorUserId"];
       var spotsAvailable = (jobJson["spotsAvailable"] == undefined) ? chance.integer({min: 1, max: 5}) : jobJson["spotsAvailable"];
       var spotUserIds = [];
       var pendingSpotIds = [];
-      var jobJson = {"jobId" : jobId , "description" : description, "creatorUserId" : creatorUserId, "spotsAvailable" : spotsAvailable, "spotUserIds" : spotUserIds, "pendingSpotIds" : pendingSpotIds};
+      var jobJson = {"jobId" : jobId , "title" : title, "description" : description, "creatorUserId" : creatorUserId, "spotsAvailable" : spotsAvailable, "spotUserIds" : spotUserIds, "pendingSpotIds" : pendingSpotIds};
   
       jobRef.push(jobJson);
 
-      userRef.once("value", function(snap) {
-      addTeachingJobToUser(snap.val(), jobId, creatorUserId);
-      });    
-    return jobJson;
+      if (creatorUserId != undefined){
+        userRef.once("value", function(snap) {
+        addTeachingJobToUser(snap.val(), jobId, creatorUserId);
+        });  
+      }
+  
+      return jobJson;
     },
 
 

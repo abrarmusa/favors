@@ -32,7 +32,7 @@ function addCardAsync(jobs, $scope, cardTypes){
   for (var i in jobs){
     var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
     newCard.jobId = jobs[i]["jobId"];
-    newCard.title = jobs[i]["description"];
+    newCard.title = (jobs[i]["title"] == undefined) ? jobs[i]["description"] : jobs[i]["title"];
     newCard.spotsAvailable = jobs[i]["spotsAvailable"];
     $scope.cards.push(angular.extend({}, newCard));
   }
@@ -84,16 +84,28 @@ app.controller('MainCardsController', function($scope, $ionicPopup, $ionicSideMe
   };
 })
 
-app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
-    $scope.goToHome = function(){
-      $ionicHistory.goBack();
-  };
-})
+
 
 app.controller('MainMyJobsController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
     $scope.goToHome = function(){
       $ionicHistory.goBack();
   };
+})
+
+app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location, auth, FirebaseApi) {
+    $scope.goToHome = function(){
+      $state.go('main');
+    };
+      $scope.createJob = function(title, description, tags, spotsAvailable){
+      var tagArray = tags.split(',');
+      for (var i in tagArray){
+        tagArray[i] = tagArray[i].trim();
+      }
+
+      var user = auth.getUser();
+      FirebaseApi.addJob({"title" : title ,"description" : description, "creatorUserId" : user.userId, "spotsAvailable" : spotsAvailable, "tagIds" : tags});
+      alert("Your job has been created.");
+    };
 })
 
 

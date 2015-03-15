@@ -10,48 +10,12 @@ app.factory("auth",function($state, $timeout, FirebaseApi, $ionicPopup){
           if (recuser.password == password){
             user = recuser;
             $state.go('main');
-            var myPopup = $ionicPopup.show({
-              title: 'Enter Wi-Fi Password',
-              subTitle: '<h1>You are logged in</h1>',
-              buttons: [
-                { text: 'Cancel' }
-              ]
-            });
-            myPopup.then(function(res) {
-              console.log('', res);
-            });
-            $timeout(function() {
-               myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 2000);
+            alert("User logged in");
           } else {
-            var myPopup = $ionicPopup.show({
-              title: 'Enter Wi-Fi Password',
-              subTitle: '<h1>Incorrect Password. Please try again</h1>',
-              buttons: [
-                { text: 'Cancel' }
-              ]
-            });
-            myPopup.then(function(res) {
-              console.log('', res);
-            });
-            $timeout(function() {
-               myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 2000);
+            alert("Incorrect password");
           }
         } else {
-            var myPopup = $ionicPopup.show({
-              title: 'Enter Wi-Fi Password',
-              subTitle: '<h1>You are not registered. Please sign up</h1>',
-              buttons: [
-                { text: 'Cancel' }
-              ]
-            });
-            myPopup.then(function(res) {
-              console.log('', res);
-            });
-            $timeout(function() {
-               myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 2000);
+          alert("User not found");
           $state.go('login');
         }
       })

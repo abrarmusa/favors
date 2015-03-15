@@ -39,7 +39,7 @@ function addCardAsync(jobs, $scope, cardTypes){
 }
 
 
-app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing, $ionicHistory, auth) {
+app.controller('MainCardsController', function($scope, $ionicPopup, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing, $ionicHistory, auth) {
 
  var cardTypes = [
     { image: 'img/favorsname.png' },
@@ -52,6 +52,7 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
 
   FirebaseApi.getJobsByTag($scope.tags).then(function(jobs){
     addCardAsync(jobs, $scope, cardTypes);
+
   });
 
 
@@ -65,6 +66,7 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
       console.log('Right swipe');
       if (user != undefined){
         FirebaseApi.applyForJob(jobId, user.userId , function(changedJob, key){});
+        alert("Request added for task. Please wait for the owner to accept.")
       }   
   }
  

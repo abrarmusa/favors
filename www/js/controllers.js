@@ -24,15 +24,6 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
   // Called when the form is submitted
   $scope.createUser = auth.createUser;
 
-  // Open our new task modal
-  $scope.newUser = function() {
-    $scope.userModal.show();
-  };
-
-  // Close the new task modal
-  $scope.closeNewUser = function() {
-    $scope.userModal.hide();
-  };
 })
 
 app.controller('LoginController', function($scope) {

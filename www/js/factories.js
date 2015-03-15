@@ -11,6 +11,7 @@ app.factory("auth",function($state, $timeout, FirebaseApi){
             user = recuser;
             $state.go('main');
             alert("User logged in");
+            alert(user.userId);
           } else {
             alert("Incorrect password");
           }

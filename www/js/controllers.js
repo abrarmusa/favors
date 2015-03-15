@@ -5,7 +5,9 @@ app.controller('SignupCtrl', function($scope, $location, $state, auth) {
   // // Called when the form is submitted
 
   $scope.createUser = auth.createUser;
-  
+  $scope.goToMain = function() {
+    $state.go('main');
+  }
 
 })
 
@@ -54,6 +56,10 @@ app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
     $ionicSideMenuDelegate.toggleLeft();
   };
   
+  $scope.go = function(path) {
+    $state.go(path);
+  }
+
 })
 
 // CONTROLLERS

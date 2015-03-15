@@ -28,12 +28,39 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/signup.html',
       controller: 'SignupCtrl'
   })
-    .state('main', {
+  .state('main', {
       url: '/main',
       templateUrl: 'templates/main.html',
       controller: 'MainController'
       // authRequired: true
-    });
+    })
+  .state('main.cards', {
+      url: '/cards',
+      views: {
+        'menuCards' :{
+          templateUrl: 'templates/mainTemplates/cards.html',
+          controller: 'MainCardsController'
+        }
+      }
+  })
+  .state('main.prefs', {
+      url: '/prefs',
+      views: {
+        'menuPrefs' :{
+          templateUrl: 'templates/mainTemplates/prefs.html',
+          controller: 'MainPrefsController'
+        }
+      }
+  })
+  .state('main.jobs', {
+      url: '/jobs',
+      views: {
+        'menuJobs' : {
+          templateUrl: 'templates/mainTemplates/jobs.html',
+          controller: 'MainJobsController'
+        }
+      }
+  });
 
 })
 

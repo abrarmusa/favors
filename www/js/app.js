@@ -5,45 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('favors', ['ionic'])
 // ROUTERS
-app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/login')
-  
-  $stateProvider.state('tutorial', {
-    url: '/tutorial',
-    authRequired: true,
-    views: {
-      tutorial: {
-        templateUrl: 'templates/tutorial.html',
-        controller: 'SlideController'
-      }
-    }
-  })
-
-  $stateProvider.state('login', {
-    url: '/login',
-    views: {
-      login: {
-        templateUrl: 'templates/login.html',
-        controller: 'LoginController'
-      }
-    }
-  })
-
-  $stateProvider.state('signup', {
-    url: '/signup',
-    views: {
-      signup: {
-        templateUrl: 'templates/signup.html',
-        controller: 'SignupCtrl'
-      }
-    }
-  })
 
 
-})
-
-
-.run(function($ionicPlatform, $rootScope, auth, $state) {
+app.run(function($ionicPlatform, $rootScope, auth, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -62,6 +26,43 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   });
 })
+
+
+app.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+  .state('tutorial', {
+    url: '/tutorial',
+    authRequired: true,
+    views: {
+      'tutorial': {
+        templateUrl: 'templates/tutorial.html',
+        controller: 'SlideController'
+      }
+    }
+  })
+  .state('login', {
+    url: '/login',
+    views: {
+      'login': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController'
+      }
+    }
+  })
+  .state('signup', {
+    url: '/signup',
+    views: {
+      'signup': {
+        templateUrl: 'templates/signup.html',
+        controller: 'SignupCtrl'
+      }
+    }
+  });
+
+  $urlRouterProvider.otherwise('/login')
+
+})
+
 
 
 

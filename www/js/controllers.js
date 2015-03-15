@@ -7,12 +7,17 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
 
 })
 
-app.controller('LoginController', function($scope, $state) {
-  
-  $scope.goTo = function() {
-   //$location.path("/signup");
+app.controller('LoginController', function($scope, $location, $state) {
+  $scope.goToTutorial = function() {
     $state.go('tutorial');
+    alert("in this function");
+  }
+
+  $scope.goToSignIn = function() {
+    $state.go('signin');
+    alert("in this function");
   };
+  
 })
 
 // CONTROLLERS

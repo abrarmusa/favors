@@ -1,9 +1,12 @@
-app.controller('SignupCtrl', function($scope, $location, $state) {
+app.controller('SignupCtrl', function($scope, $location, $state, auth) {
   // No need for testing data anymore
   // $scope.users = [];
 
   // // Called when the form is submitted
-  // $scope.createUser = auth.createUser;
+  $scope.createUser = auth.createUser;
+
+  $scope.getUser = auth.getUser;
+  
   $scope.goToMain = function() {
     $state.go('main');
   }

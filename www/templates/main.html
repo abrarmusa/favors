@@ -1,8 +1,11 @@
  <ion-pane ng-controller="MainController">
-          <ion-header-bar class="bar-calm">
-              <h1 class="title">Ionic Tinder Cards</h1>
-          </ion-header-bar>
- 
+
+         
+
+      
+
+          <!-- Cards -->
+
           <td-cards>
               <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
               on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
@@ -17,4 +20,26 @@
                   </div>
               </td-card>
           </td-cards>
-      </ion-pane>
+          
+            <ion-side-menus>
+            <!-- Center content -->
+            <ion-side-menu-content>
+            </ion-side-menu-content>
+
+            <!-- Left menu -->
+            <ion-side-menu side="left">
+
+                <ion-content scroll="false" has-header="true" class="top44 sidemenustyle">
+                        <header class="bar bar-header sidenavstyle">
+                    <div class="title">Menu</div>
+                </header>
+                    <ul class="list">
+                        <a ui-sref="entry" class="item">Look for Jobs</a>
+                        <a ui-sref="main.home" class="item" ng-click="toggleMenu()">My jobs</a>
+                        <a ui-sref="main.tabs" class="item" ng-click="toggleMenu()">Set your preferences</a>
+                    </ul>
+                </ion-content>
+            </ion-side-menu>
+          </ion-side-menus>
+     
+ </ion-pane>

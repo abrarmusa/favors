@@ -17,12 +17,33 @@ h1.form {
   background-color: #fff;
   text-align: center;
 
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-family: 'GeosansLight', sans-serif;
   font-weight: 300;
 }
 
 .blue {
   background-color: blue;
+}
+
+.sidemenustyle {
+  background: #446CB3;
+  color:white;
+}
+
+.sidenavstyle {
+  background: #446CB3;
+  color:white;
+}
+
+.sidemenustyle h1, h2, h3, h4{
+  font-family: 'GeosansLight', sans-serif;
+  color:white;
+}
+
+.sidemenustyle a{
+  font-family: 'GeosansLight', sans-serif;
+  font-weight: 500;
+  color: #446CB3;
 }
 
 .yellow {
@@ -42,6 +63,9 @@ h1.form {
   padding-top: 40px;
 }
 
+.top44 {
+  padding-top:44px;
+}
 .pane {
   background-color: #2C3E50;
 }

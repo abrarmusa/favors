@@ -19,8 +19,8 @@ app.controller('LoginController', function($scope, $location, $state, auth) {
 
 })
 
-app.controller('MainController', function($scope) {
-  
+
+app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
   var cardTypes = [
     { image: 'img/favorsname.png' },
     { image: 'img/formlogo.png' },
@@ -49,8 +49,12 @@ app.controller('MainController', function($scope) {
         $scope.cards.splice(index, 1);
         console.log('Card removed');
     }
-});
-
+  
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  
+})
 
 // CONTROLLERS
 app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {
@@ -69,6 +73,7 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
 })
 
 app.controller('FooController', function($scope, FirebaseApi){
+    FirebaseApi.acceptUserForJob(965294, 546046); // accept user 546046 for job id 965294  
     FirebaseApi.getUser("fe@goenu.io").then(function(user) {
     console.log(user);
     });

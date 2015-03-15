@@ -82,7 +82,7 @@ app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $s
   };
 })
 
-app.controller('MainPrefsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location) {
   $scope.goToHome = function(){
     $state.go('main');
   };

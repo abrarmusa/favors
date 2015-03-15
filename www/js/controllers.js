@@ -17,7 +17,7 @@ app.controller('LoginController', function($scope, $location, $state) {
 })
 
 // CONTROLLERS
-.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth) {
+.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {
   $scope.myActiveSlide = 0;
 
   $scope.slideChanged = function(index) {
@@ -25,6 +25,10 @@ app.controller('LoginController', function($scope, $location, $state) {
     var increment = $document[0].getElementsByClassName('increment');
     increment[0].style.width = (1+19*index/(slides-1))*5+'%';
   }; 
+
+  $scope.goToSignup = function(){
+    $location.path('/signup');
+  };
 
 })
 

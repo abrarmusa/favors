@@ -36,6 +36,8 @@ angular.module('firebase.api', [])
       });    
     return jobJson;
     },
+
+    // @returns: userObject if successful, "NULL" if no match found
     getUser: function(email){
       var scopeEmail = email;
       return $q(function(resolve, reject) {
@@ -46,8 +48,10 @@ angular.module('firebase.api', [])
             var userEmail = userArray[userHash]["email"];
             if (email.localeCompare(userEmail) == 0){
               resolve(userArray[userHash]);
+              return;
             }
           }
+          resolve("NULL");
         });
       });
     }

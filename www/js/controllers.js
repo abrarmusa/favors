@@ -81,9 +81,20 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
 app.controller('FooController', function($scope, FirebaseApi){
     FirebaseApi.acceptUserForJob(965294, 546046); // accept user 546046 for job id 965294  
     FirebaseApi.getUser("fe@goenu.io").then(function(user) {
+    FirebaseApi.applyForJob(987125, 224205, printSpotNumber(Object));
     console.log(user);
     });
     console.log(FirebaseApi.addUser({"firstName" : "John", "lastName" : "Doe", "email" : "johnDoe@gmail.com", "linkedInURL" : "www.linkedin.com/JOhnny"}));
     console.log(FirebaseApi.addJob({"description" : "Build my house for me.", "creatorUserId" : 101, "spotsAvailable" : 5}));
+
 })
+
+// This is the comment handler for applyForJob()
+/*
+ function printSpotNumber(Object) {
+    console.log(Object["spotsAvailable"]);
+ }
+ */
+
+
 

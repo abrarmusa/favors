@@ -1,5 +1,7 @@
 var jobRef = new Firebase('brilliant-heat-2461.firebaseIO.com/jobs');
 var userRef = new Firebase('brilliant-heat-2461.firebaseIO.com/users');
+var jobRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/');
+
 angular.module('firebase.api', [])
 
 .factory('FirebaseApi', function($q) {
@@ -36,6 +38,8 @@ angular.module('firebase.api', [])
       });    
     return jobJson;
     },
+
+
 
   // @acceptedUserId: the userId we are accepting to participate in jobId
   // @jobId: the jobId we are granting acceptance to acceptedUserId
@@ -93,7 +97,49 @@ angular.module('firebase.api', [])
           resolve("NULL");
         });
       });
-    }
+    },
+
+    /**********************************************************************************************************************************************************
+// Called when a user applies to a job posting
+// Adds userId to a job's pendingSpotIds field
+// Adds jobId to a user's participantJobs field
+// Subscribes to a job by initializing a listener that is activated by a change in any of the job object's children
+//
+// jobId (int) =  the jobId of the job that the user is applying to
+// userId (int) = the userId of the user who is applying to the job
+// ccFunction (function(Javascript Object)) = the function that repsonds to a change in the subscribed job
+//      - takes a Javascript Object (returned by snapshot.val()) which includes the job associated to the jobId and all of the job's children
+//
+// Example: applyForJob(2196, 335, printSpotNumber(Object))
+//
+// // prints the number of spots available for that job
+// printSpotNumber(Object) {
+//    console.log(Object["spotUserIds"])
+// }
+******************************************************************************************************************************************************************/
+applyForJob: function (jobId, userId, ccFunction) {
+
+  jobRef.once("value", function(snap) {
+      console.log("initial data loaded! "+ Object.keys(snap.val()).length);
+      console.log(snap.val());
+      
+      var rootRef = snap.val();
+      var userArray = rootRef["users"];
+      var jobArray = rootRef["jobs"];
+
+      // SEARCH THROUGH ALL JOBS
+      for (var key in jobArray){
+          // FIND MATCH
+        if (jobArray[key]["jobId"] == jobId) {
+          updateJob(jobId, userId, jobArray, key);
+          updateUser(jobId, userId, jobArray, userArray);
+          subscribeToJob(key, ccFunction);
+        } 
+      }
+  });
+}
+
+
   };
 });
 
@@ -105,7 +151,7 @@ angular.module('firebase.api', [])
         continue;
       }
       else if (creatorUserId == userId){
-        var userRef = new Firebase('brilliant-heat-2461.firebaseIO.com/users/' + userHash);
+        var userRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/users/' + userHash);
         var teachingJobs = userArray[userHash]["teachingJobs"];
         
         if (teachingJobs == undefined){
@@ -119,3 +165,52 @@ angular.module('firebase.api', [])
       }
     }
   }
+
+function updateJob(jobId, userId, jobArray, key) {
+  var jobRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/jobs/' + key);
+  var pendingSpotIds = jobArray[key]["pendingSpotIds"];
+
+  if (pendingSpotIds == undefined) {
+    jobRef.update({"pendingSpotIds" : [userId]});
+  }
+  else {
+    pendingSpotIds.push(userId);
+    jobRef.update({"pendingSpotIds": pendingSpotIds});
+  }
+  console.log("Successful add to job's pendingSpotIds");
+}
+
+
+function updateUser(jobId, userId, jobArray, userArray) {
+  for (var key in userArray) {
+    console.log('https://favorsnw.firebaseio.com/' + key);
+    if (userArray[key]["userId"] == userId) {
+      console.log(userArray[key]["userId"]);
+      var userKey = key;
+    }
+  }
+  var userRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/users/' + userKey);
+  var participantJobs = userArray[userKey]["participantJobs"];
+
+
+  if (participantJobs == undefined) {
+    userRef.update({"participantJobs" : [jobId]});
+  }
+  else {
+    participantJobs.push(jobId);
+    userRef.update({"participantJobs": participantJobs});
+  }
+  console.log("Successful add to user's participantJobs");
+}
+
+
+// Called when a user applies for a job so that the user is notified upon any change to the children 
+// of the job object (ie: when a job creator allocates a spot to another user and the total number of
+// spots belonging to that job is subsequently reduced)
+function subscribeToJob(key, ccFunction) {
+  var ref = new Firebase('https://favorsnw.firebaseio.com/jobs/' + key);
+  ref.on("child_changed", function(snapshot) {
+    var changedJob = snapshot.val();
+    ccFunction(changedJob);
+  });
+}

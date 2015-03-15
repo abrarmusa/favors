@@ -38,18 +38,21 @@ function addCardAsync(jobs, $scope, cardTypes){
   }
 }
 
-app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi) {
+app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing) {
  var cardTypes = [
     { image: 'img/favorsname.png' },
     { image: 'img/formlogo.png' },
     { image: 'img/job.png'}
   ];
 
+  $scope.tags = sharing.sharedObject;
   $scope.cards = [];
 
-  FirebaseApi.getJobsByTag(["Beverages", "Bird Watching"]).then(function(jobs){
+  FirebaseApi.getJobsByTag($scope.tags).then(function(jobs){
     addCardAsync(jobs, $scope, cardTypes);
   });
+
+
  
   $scope.cardSwipedLeft = function(index) {
       console.log('Left swipe');
@@ -90,10 +93,15 @@ app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state
   $scope.tags = sharing.sharedObject;
 
   $scope.addTag = function(tag) {
-    if ( !(sharing.sharedObject.includes(tag)) ) {
+    console.log($scope.tags);
+    console.log(tag);
+    if (!contains($scope.tags, tag)){
       $scope.tags.push(tag);
     }
-    console.log($scope.tags);
+    console.log("aease ",$scope.tags);
+  }
+  $scope.go = function(path) {
+    $state.go(path);
   }
 
 })

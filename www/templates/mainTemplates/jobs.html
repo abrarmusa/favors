@@ -16,23 +16,22 @@
 	
 	<div class="list">
         <label class="item item-input center">
-          <input type="text" ng-model="Name" placeholder="Name">
+          <input type="text" ng-model="title" placeholder="Title">
         </label>
         <label class="item item-input center">
-          <input type="text" ng-model="Tag" placeholder="Tag">
+          <input type="text" ng-model="description" placeholder="Description">
         </label>
         <label class="item item-input center">
-          <input type="text" ng-model="Spots" placeholder="Spots">
+          <input type="text" ng-model="tags" placeholder="Tags, Comma Delimited">
         </label>
         <label class="item item-input center">
-          <input type="text" ng-model="Description" placeholder="Description">
+          <input type="text" ng-model="spotsAvailable" placeholder="Spots">
         </label>
-        
         <br> 
         <center>
     
 
-        <button class="button button-positive">
+        <button class="button button-positive" ng-click="createJob(title, description, tags, spotsAvailable)">
          Create New Job
         </button>
         </center>

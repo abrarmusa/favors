@@ -1,4 +1,4 @@
-app.factory("auth",function($state, $timeout){
+app.factory("auth",function($state, $timeout, FirebaseApi){
   var user;
   return {
     getUser: function(){
@@ -11,7 +11,7 @@ app.factory("auth",function($state, $timeout){
         password: password,
         email: email
       });
-      user = addUser(newuser);
+      user = FirebaseApi.addUser(newuser);
       $state.go('tutorial');
     }
   }

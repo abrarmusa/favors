@@ -1,4 +1,7 @@
 <ion-pane ng-controller="MainCardsController">
+    <div class="bar bar-header sidenavstyle">
+      <h1 class="title">Search for Jobs</h1>
+    </div>
 	     <td-cards>
               <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
               on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"

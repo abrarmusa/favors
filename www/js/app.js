@@ -4,7 +4,6 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('favors', ['ionic'])
-var userRef = new Firebase('brilliant-heat-2461.firebaseIO.com/users');
 // ROUTERS
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/')
@@ -27,7 +26,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
-
   $stateProvider.state('signup', {
     url: '/signup',
     views: {
@@ -40,7 +38,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 })
 
 
-app.run(function($ionicPlatform) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -53,50 +51,7 @@ app.run(function($ionicPlatform) {
   });
 })
 
-// CONTROLLERS
-app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document) {
-  $scope.myActiveSlide = 0;
 
-  $scope.slideChanged = function(index) {
-    var slides = $ionicSlideBoxDelegate.slidesCount();
-    var increment = $document[0].getElementsByClassName('increment');
-    increment[0].style.width = (1+19*index/(slides-1))*5+'%';
-  }; 
 
-})
 
-.controller('SignupCtrl', function($scope, $ionicModal) {
-  // No need for testing data anymore
-  $scope.users = [];
 
-  // Create and load the Modal
-  $ionicModal.fromTemplateUrl('new-user.html', function(modal) {
-    $scope.userModal = modal;
-  }, {
-    scope: $scope,
-    animation: 'slide-in-up'
-  });
-
-  // Called when the form is submitted
-  $scope.createUser = function(firstName, lastName, password, email) {
-
-    var newuser = ({
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-      email: email
-    });
-    newuser = addUser(newuser);
-    console.log(newuser);
-  };
-
-  // Open our new task modal
-  $scope.newUser = function() {
-    $scope.userModal.show();
-  };
-
-  // Close the new task modal
-  $scope.closeNewUser = function() {
-    $scope.userModal.hide();
-  };
-});

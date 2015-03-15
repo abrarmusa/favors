@@ -1,6 +1,6 @@
 var jobRef = new Firebase('brilliant-heat-2461.firebaseIO.com/jobs');
 var userRef = new Firebase('brilliant-heat-2461.firebaseIO.com/users');
-var jobRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/');
+//var jobRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/');
 
 angular.module('firebase.api', [])
 
@@ -186,10 +186,12 @@ applyForJob: function (jobId, userId, ccFunction) {
         matchingJobs = [];
         jobArray = snap.val();
         for (var jobHash in jobArray){
+          console.log("1 Searchign for "+tags+" in "+jobHash);
           var iteratedJobTags = jobArray[jobHash]["tagIds"];
           if (iteratedJobTags == undefined){
             continue;
           }
+          console.log("Searchign for "+tags+" in "+jobHash);
           for (var i in tags){
             if (contains(iteratedJobTags, tags[i])){
               matchingJobs.push(jobArray[jobHash]);

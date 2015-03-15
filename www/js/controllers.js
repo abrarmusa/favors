@@ -63,10 +63,7 @@ app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
 })
 
 // CONTROLLERS
-app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location, FirebaseApi) {
-    FirebaseApi.getJobsByTag(["Gardening", "Fencing"]).then(function(jobs){
-      console.log(jobs);
-    });
+app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {
 
   $scope.myActiveSlide = 0;
 

@@ -113,11 +113,15 @@ app.controller('FooController', function($scope, FirebaseApi){
 })
 
 // This is the comment handler for applyForJob()
+// key = key of the job that was changed
+// Object =  Object that was changed
 /*
- function printSpotNumber(Object) {
-    console.log(Object["spotsAvailable"]);
+ function printSpotNumber(Object, key) {
+    console.log(Object);
+    console.log(key);
  }
  */
+ 
 
 
 

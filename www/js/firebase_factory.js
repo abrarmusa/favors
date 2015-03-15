@@ -113,8 +113,11 @@ angular.module('firebase.api', [])
 // Example: applyForJob(2196, 335, printSpotNumber(Object))
 //
 // // prints the number of spots available for that job
-// printSpotNumber(Object) {
-//    console.log(Object["spotUserIds"])
+// // key = key of the job that was changed
+// // Object = the object that was changed
+// printSpotNumber(Object, key) {
+//    console.log(Object["spotUserIds"]);
+//    console.log(key);
 // }
 ******************************************************************************************************************************************************************/
 applyForJob: function (jobId, userId, ccFunction) {
@@ -281,10 +284,11 @@ function updateUser(jobId, userId, jobArray, userArray) {
 // Called when a user applies for a job so that the user is notified upon any change to the children 
 // of the job object (ie: when a job creator allocates a spot to another user and the total number of
 // spots belonging to that job is subsequently reduced)
+
 function subscribeToJob(key, ccFunction) {
   var ref = new Firebase('https://brilliant-heat-2461.firebaseio.com/jobs/' + key);
   ref.on("child_changed", function(snapshot) {
     var changedJob = snapshot.val();
-    ccFunction(changedJob);
+    ccFunction(changedJob, key);
   });
 }

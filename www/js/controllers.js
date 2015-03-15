@@ -39,6 +39,13 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
   };
 })
 
+app.controller('LoginController', function($scope) {
+  $scope.go = function() {
+   //$location.path("/signup");
+   angular.element(document.querySelector('[icon="ion-help"]')).triggerHandler('click')
+  }
+})
+
 // CONTROLLERS
 .controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth) {
   $scope.myActiveSlide = 0;
@@ -51,8 +58,3 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
 
 })
 
-
-.controller('LoginController', function() {
-
-
-})

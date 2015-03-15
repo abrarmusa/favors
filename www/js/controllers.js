@@ -38,7 +38,7 @@ function addCardAsync(jobs, $scope, cardTypes){
   }
 }
 
-app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing) {
+app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi, sharing, $ionicHistory) {
  var cardTypes = [
     { image: 'img/favorsname.png' },
     { image: 'img/formlogo.png' },
@@ -72,23 +72,23 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
   };
 
   $scope.goToHome = function(){
-    $state.go('main');
+    $ionicHistory.goBack();
   };
 })
 
-app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
     $scope.goToHome = function(){
-    $state.go('main');
+      $ionicHistory.goBack();
   };
 })
 
-app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
   $scope.goToHome = function(){
-    $state.go('main');
+    $ionicHistory.goBack();
   };
 })
 
-app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state, sharing) {
+app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state, sharing, $ionicHistory) {
 
   $scope.tags = sharing.sharedObject;
 
@@ -105,7 +105,7 @@ app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state
   }
 
   $scope.goToHome = function(){
-    $state.go('main');
+    $ionicHistory.goBack();
   };
 
 })

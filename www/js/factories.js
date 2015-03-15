@@ -34,3 +34,10 @@ app.factory("auth",function($state, $timeout, FirebaseApi){
     }
   }
 })
+
+app.factory("sharing", function(){
+
+  return {sharedObject: [] }
+
+});
+

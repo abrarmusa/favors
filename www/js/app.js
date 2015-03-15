@@ -40,6 +40,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/mainTemplates/cards.html',
       controller: 'MainCardsController'
   })
+
+  .state('tags', {
+      url: '/tags',
+      templateUrl: 'templates/mainTemplates/tags.html',
+      controller: 'TagsController'
+  })
+
   .state('prefs', {
       url: '/prefs',
       templateUrl: 'templates/mainTemplates/prefs.html',

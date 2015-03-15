@@ -1,0 +1,29 @@
+<ion-pane ng-controller="TagsController">
+  
+
+    <div class="bar bar-header sidenavstyle">
+      <h1 class="title">Search for Jobs</h1>
+    </div>
+
+    <ion-content class="loginform" scroll="false">
+      <center>
+      <div class="list">
+        <label class="item item-input center">
+          <input type="text" ng-model="tag" placeholder="Enter a tag for task">
+        </label>
+        <br> 
+        <button class="button button-positive" ng-click="addTag(tag)">
+         Add Tag
+        </button>
+        <br>
+        <h1 class="white">Your Tags</h1>
+          <div ng-repeat="tag in tags">
+            <h3 class="white">{{ tag }}</h3>
+          </div>
+        <button class="button button-positive" ng-click="search(tag)">
+         Search by tags
+        </button>
+        </center>
+      </div>
+    </ion-content>
+</ion-pane>

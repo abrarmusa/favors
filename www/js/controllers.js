@@ -52,7 +52,6 @@ app.controller('MainCardsController', function($scope, $ionicPopup, $ionicSideMe
 
   FirebaseApi.getJobsByTag($scope.tags).then(function(jobs){
     addCardAsync(jobs, $scope, cardTypes);
-
   });
 
 
@@ -109,10 +108,24 @@ app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $s
 })
 
 
-app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory) {
+app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory, auth, FirebaseApi) {
+  $scope.init = function(){
+    var user = auth.getUser();
+    var jobids = [];
+    if (user != undefined){
+      jobids = user.teachingJobs;
+    }
+    
+    FirebaseApi.getJobsById(jobids).then(function(jobs){
+      $scope.jobs = jobs;
+    });
+  };
+
   $scope.goToHome = function(){
     $ionicHistory.goBack();
   };
+
+
 })
 
 app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state, sharing, $ionicHistory) {

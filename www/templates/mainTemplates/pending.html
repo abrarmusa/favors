@@ -1,4 +1,4 @@
-<ion-pane ng-controller="MainPendingController">
+<ion-pane ng-controller="MainPendingController" data-ng-init="init()">
 
  <div class="bar bar-header sidenavstyle">
     <button class="button icon-left ion-chevron-left button-positive" ng-click="goToHome()">
@@ -9,48 +9,30 @@
 
 	<br>
 	<br>
-	<div class="list card">
-  <div class="item">
-    <center><h1> Name of Job #1 created </h1></center>
-  </div>
 
-  <div class="item item-body">
-     <li class="item item-checkbox item-checkbox-right">
-       Applicant 1
-       <label class="checkbox">
-         <input type="checkbox">
-       </label>
-      </li>
 
-       <li class="item item-checkbox item-checkbox-right">
-       Applicant 2
-       <label class="checkbox">
-         <input type="checkbox">
-       </label>
-      </li>
+    <div ng-repeat="job in jobs" smooth-scroll>
+  <div class="list card">
+    <div class="item">
+      <center><h1> {{ job.title }}</h1></center>
     </div>
-  </div>
 
-    <div class="list card">
-  <div class="item">
-    <center><h1> Name of Job #2 created </h1></center>
-  </div>
-
-  <div class="item item-body">
-     <li class="item item-checkbox item-checkbox-right">
-       Applicant 3
-       <label class="checkbox">
-         <input type="checkbox">
-       </label>
-      </li>
-
+    <div class="item item-body">
        <li class="item item-checkbox item-checkbox-right">
-       Applicant 4
-       <label class="checkbox">
-         <input type="checkbox">
-       </label>
-      </li>
+         Applicant 1
+         <label class="checkbox">
+           <input type="checkbox">
+         </label>
+        </li>
+
+         <li class="item item-checkbox item-checkbox-right">
+         Applicant 2
+         <label class="checkbox">
+           <input type="checkbox">
+         </label>
+        </li>
+      </div>
     </div>
-  </div>
+    </div>
 
 </ion-pane>

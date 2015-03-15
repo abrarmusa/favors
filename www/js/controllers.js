@@ -85,6 +85,19 @@ app.controller('MainPrefsController', function($scope, $ionicSideMenuDelegate, $
   };
 })
 
+app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state, sharing) {
+
+  $scope.tags = sharing.sharedObject;
+
+  $scope.addTag = function(tag) {
+    if ( !(sharing.sharedObject.includes(tag)) ) {
+      $scope.tags.push(tag);
+    }
+    console.log($scope.tags);
+  }
+
+})
+
 
 // CONTROLLERS
 app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {
@@ -102,6 +115,8 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
   };
 
 })
+
+
 
 app.controller('FooController', function($scope, FirebaseApi){
     FirebaseApi.getJobsByTag(["Gardening", "Fencing"]).then(function(jobs){

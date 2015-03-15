@@ -5,6 +5,7 @@ app.controller('SignupCtrl', function($scope, $location, $state, auth) {
   // // Called when the form is submitted
 
   $scope.createUser = auth.createUser;
+  console.log(auth.getUser);
   $scope.goToMain = function() {
     $state.go('main');
   }

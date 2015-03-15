@@ -30,6 +30,9 @@ app.factory("auth",function($state, $timeout, FirebaseApi, $ionicPopup){
         email: email
       });
       user = FirebaseApi.addUser(newuser);
+      alert("User Created");
+      alert(user.firstName);
+      alert("User logged in");
       $state.go('main');
     }
   }

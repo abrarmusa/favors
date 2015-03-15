@@ -78,16 +78,16 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
   });
 
   // Called when the form is submitted
-  $scope.createUser = function(user) {
+  $scope.createUser = function(firstName, lastName, password, email) {
 
-    userRef.push({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      password: user.password,
-      email: user.email
+    var newuser = ({
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      email: email
     });
-
-    $scope.userModal.hide();
+    newuser = addUser(newuser);
+    console.log(newuser);
   };
 
   // Open our new task modal

@@ -19,7 +19,7 @@ app.controller('LoginController', function($scope, $location, $state, auth) {
     $state.go('tutorial');
   }
 
-  $scope.getUser = auth.getUser;
+  $scope.loginUser = auth.loginUser;
 
   $scope.goToMain = function() {
     $state.go('main');

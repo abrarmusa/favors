@@ -1,22 +1,22 @@
 app.factory("auth",function($state, $timeout, FirebaseApi){
   var user;
   return {
-
-    getUser: function(email, password){
-      var usercopy = ({
-        email: email,
-        password: password
-      });
+    getUser: function(){
+      return user
+    },
+    loginUser: function(email, password){
       FirebaseApi.getUser(email).then(function(recuser){
-        if (user != "no user found" && user != null){
-          if (recuser.password == usercopy.password){
-            var user = recuser;
+        if (recuser != "NULL"){
+          if (recuser.password == password){
+            user = recuser;
             $state.go('main');
+            alert("User logged in");
           } else {
-            alert("Incorrect Password")
+            alert("Incorrect password");
           }
         } else {
           alert("User not found");
+          $state.go('login');
         }
       })
 

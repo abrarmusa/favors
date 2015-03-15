@@ -38,6 +38,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
     })
+
   .state('tutorial', {
       url: '/tutorial',
       templateUrl: 'templates/tutorial.html',
@@ -47,7 +48,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('main', {
       url: '/main',
       templateUrl: 'templates/main.html',
-      controller: 'MainController'
+      controller: 'MainController',
+      authRequired: true
     })
   .state('signup', {
       url: '/signup',

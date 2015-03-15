@@ -147,10 +147,19 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("../img/create.png") no-repeat center;
+  background:transparent url("../img/create.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
+}
+
+.index-font {
+  color:white;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 43px;
+  text-shadow:2px 2px black;
 }
 
 .index-buttonc {
@@ -159,10 +168,11 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("../img/filter.png") no-repeat center;
+  background:transparent url("../img/filter.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
+
 }
 
 .index-buttond {
@@ -171,7 +181,7 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("../img/search.png") no-repeat center;
+  background:transparent url("../img/search.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;
@@ -183,7 +193,7 @@ td-cards {
   padding-bottom: 5px;
   height:185px;
   /*background-color: #0c63ee;*/
-  background:#0c63ee url("../img/request.png") no-repeat center;
+  background:transparent url("../img/request.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;

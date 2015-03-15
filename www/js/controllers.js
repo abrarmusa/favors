@@ -104,6 +104,10 @@ app.controller('TagsController', function($scope, $ionicSideMenuDelegate, $state
     $state.go(path);
   }
 
+  $scope.goToHome = function(){
+    $state.go('main');
+  };
+
 })
 
 

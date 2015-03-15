@@ -30,7 +30,7 @@ app.factory("auth",function($state, $timeout, FirebaseApi){
         email: email
       });
       user = FirebaseApi.addUser(newuser);
-      $state.go('login');
+      $state.go('main');
     }
   }
 })

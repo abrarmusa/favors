@@ -12,7 +12,6 @@ app.controller('SignupCtrl', function($scope, $location, $state, auth) {
 app.controller('LoginController', function($scope, $location, $state, auth) {
 
   $scope.go = function(path) {
-    alert(path);
     $state.go(path)
   }
 

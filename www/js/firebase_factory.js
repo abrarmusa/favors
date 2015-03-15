@@ -37,6 +37,45 @@ angular.module('firebase.api', [])
     return jobJson;
     },
 
+  // @acceptedUserId: the userId we are accepting to participate in jobId
+  // @jobId: the jobId we are granting acceptance to acceptedUserId
+  acceptUserForJob: function (jobId, acceptedUserId){
+    jobRef.once("value", function(snap) {
+      jobArray = snap.val();
+      for (var jobHash in jobArray){ // iterate over jobs
+        var iteratedJobId = jobArray[jobHash]["jobId"];
+        if (iteratedJobId == jobId){ // found the matching job
+          console.log("FOUND JOB WITH JOB ID");
+          var pendingSpotIds = jobArray[jobHash]["pendingSpotIds"];
+          if (pendingSpotIds != undefined){ // pendingSpotIds contains things
+            console.log("LOOKING AT PENDING ID");
+            for (var i = 0; i < pendingSpotIds.length; i++){ // iterate over pending spot ids
+              if (pendingSpotIds[i] == acceptedUserId){ // found a match in pending list
+                if (i > -1) { // array bounds check
+                  console.log("SPLICING "+i);
+                  pendingSpotIds.splice(i, 1);
+                  console.log(pendingSpotIds);
+                  var jobRefHash = new Firebase('brilliant-heat-2461.firebaseIO.com/jobs/'+jobHash);
+                  jobRefHash.update({"pendingSpotIds": pendingSpotIds});
+                  var spotUserIds = jobArray[jobHash]["spotUserIds"];
+                  if (spotUserIds == undefined){ // empty spotUserId
+                    jobRefHash.update({"spotUserIds": [acceptedUserId]});
+                  }
+                  else{
+                    spotUserIds.push(acceptedUserId);
+                    jobRefHash.update({"spotUserIds": spotUserIds});
+                  }
+
+                }
+              }
+
+            }
+          }
+        }
+      }
+    });
+  },    
+
     // @returns: userObject if successful, "NULL" if no match found
     getUser: function(email){
       var scopeEmail = email;

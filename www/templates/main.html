@@ -1,10 +1,36 @@
  <ion-pane ng-controller="MainController">
-  <ion-side-menus>
-    <!-- Center content -->
+    <div class="bar bar-header sidenavstyle">
+      <h1 class="title">Jobs</h1>
+    </div>
+             
+
+          <!-- Cards -->
+
+          <td-cards>
+              <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
+              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+              on-partial-swipe="cardPartialSwipe(amt)">
+                  <div class="title">
+                      <!-- {{card.title}} -->
+
+                      <h1>asfasf</h1>
+                  </div>
+                  <div class="image">
+                      <div class="no-text overlayBox"><div class="noBox boxed">Trash</div></div>
+                      <img ng-src="{{card.image}}">
+
+                      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Save</div></div>
+                  </div>
+                  <div>
+                    <h1>Hello<h1>
+                  </div>
+              </td-card>
+          </td-cards>
+          
+<!--   <ion-side-menus>
     <ion-side-menu-content>
     </ion-side-menu-content>
 
-    <!-- Left menu -->
     <ion-side-menu side="left">
 
         <ion-content scroll="false" has-header="true" class="top44 sidemenustyle">
@@ -27,14 +53,6 @@
         </ion-content>
     </ion-side-menu>
 
-  </ion-side-menus>
-      <td-cards>
-        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
-          <div class="image" ng-controller="CardCtrl">
-            <div class="no-text">NOPE</div>
-            <img ng-src="{{card.image}}">
-            <div class="yes-text">LIKE</div>
-          </div>
-        </td-card>
-      </td-cards>
+  </ion-side-menus> -->
+     
  </ion-pane>

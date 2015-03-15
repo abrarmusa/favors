@@ -106,7 +106,7 @@ app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $s
         alert("You must be logged in to create a job");
       }
       else{
-        FirebaseApi.addJob({"title" : title ,"description" : description, "creatorUserId" : user.userId, "spotsAvailable" : spotsAvailable, "tagIds" : tags});
+        FirebaseApi.addJob({"title" : title ,"description" : description, "creatorUserId" : user.userId, "spotsAvailable" : spotsAvailable, "tagIds" : tagArray});
         alert("Your job has been created.");
       }
     };

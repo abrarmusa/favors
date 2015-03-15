@@ -1,6 +1,6 @@
 var jobRef = new Firebase('brilliant-heat-2461.firebaseIO.com/jobs');
 var userRef = new Firebase('brilliant-heat-2461.firebaseIO.com/users');
-//var jobRef = new Firebase('https://brilliant-heat-2461.firebaseio.com/');
+var rootReference = new Firebase('https://brilliant-heat-2461.firebaseio.com/');
 
 angular.module('firebase.api', [])
 
@@ -113,13 +113,16 @@ angular.module('firebase.api', [])
 // Example: applyForJob(2196, 335, printSpotNumber(Object))
 //
 // // prints the number of spots available for that job
-// printSpotNumber(Object) {
-//    console.log(Object["spotUserIds"])
+// // key = key of the job that was changed
+// // Object = the object that was changed
+// printSpotNumber(Object, key) {
+//    console.log(Object["spotUserIds"]);
+//    console.log(key);
 // }
 ******************************************************************************************************************************************************************/
 applyForJob: function (jobId, userId, ccFunction) {
 
-  jobRef.once("value", function(snap) {
+  rootReference.once("value", function(snap) {
       console.log("initial data loaded! "+ Object.keys(snap.val()).length);
       console.log(snap.val());
       
@@ -186,12 +189,10 @@ applyForJob: function (jobId, userId, ccFunction) {
         matchingJobs = [];
         jobArray = snap.val();
         for (var jobHash in jobArray){
-          console.log("1 Searchign for "+tags+" in "+jobHash);
           var iteratedJobTags = jobArray[jobHash]["tagIds"];
           if (iteratedJobTags == undefined){
             continue;
           }
-          console.log("Searchign for "+tags+" in "+jobHash);
           for (var i in tags){
             if (contains(iteratedJobTags, tags[i])){
               matchingJobs.push(jobArray[jobHash]);
@@ -281,10 +282,11 @@ function updateUser(jobId, userId, jobArray, userArray) {
 // Called when a user applies for a job so that the user is notified upon any change to the children 
 // of the job object (ie: when a job creator allocates a spot to another user and the total number of
 // spots belonging to that job is subsequently reduced)
+
 function subscribeToJob(key, ccFunction) {
-  var ref = new Firebase('https://favorsnw.firebaseio.com/jobs/' + key);
+  var ref = new Firebase('https://brilliant-heat-2461.firebaseio.com/jobs/' + key);
   ref.on("child_changed", function(snapshot) {
     var changedJob = snapshot.val();
-    ccFunction(changedJob);
+    ccFunction(changedJob, key);
   });
 }

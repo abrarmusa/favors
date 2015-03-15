@@ -2,6 +2,9 @@
   
 
     <div class="bar bar-header sidenavstyle">
+      <button class="button button-positive" ng-click="goToHome()">
+        Home
+      </button>
       <h1 class="title">Search for Jobs</h1>
     </div>
 
@@ -25,9 +28,7 @@
               on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
               on-partial-swipe="cardPartialSwipe(amt)">
                   <div class="title">
-                      <!-- {{card.title}} -->
-
-                      <h1>Sarah Jane</h1>
+                      <h1>{{card.title}}</h1>
                   </div>
                   <div class="image">
                       <div class="no-text overlayBox"><div class="noBox boxed">Trash</div></div>
@@ -36,7 +37,7 @@
                       <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Save</div></div>
                   </div>
                   <div>
-                    <h1>I make fences<h1>
+                    <h1>Spots Available: {{card.spotsAvailable}}<h1>
                   </div>
               </td-card>
           </td-cards>

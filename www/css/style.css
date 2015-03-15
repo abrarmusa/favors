@@ -141,10 +141,49 @@ td-cards {
     display: block;
 }
 
-.index-button {
+.index-buttona {
   margin:5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   height:185px;
-  background-color: #0c63ee;
+  /*background-color: #0c63ee;*/
+  background:#0c63ee url("/img/create.png") no-repeat center;
+  color: white;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.index-buttonc {
+  margin:5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height:185px;
+  /*background-color: #0c63ee;*/
+  background:#0c63ee url("/img/filter.png") no-repeat center;
+  color: white;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.index-buttond {
+  margin:5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height:185px;
+  /*background-color: #0c63ee;*/
+  background:#0c63ee url("/img/search.png") no-repeat center;
+  color: white;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.index-buttonb {
+  margin:5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height:185px;
+  /*background-color: #0c63ee;*/
+  background:#0c63ee url("/img/request.png") no-repeat center;
   color: white;
   border-radius: 10px;
   border: 0px;

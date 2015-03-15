@@ -82,7 +82,7 @@ h1.form {
 .loginform {
   height: 100% !important;
   background-color: #2C3E50;
-  padding-top: 40px;
+  padding-top: 100px;
 }
 
 .center {
@@ -155,7 +155,7 @@ td-cards {
 
 .index-font {
   color:white;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   position: relative;
   top: 43px;

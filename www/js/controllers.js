@@ -21,18 +21,12 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
   //   alert('always: ' + response);
   // });
 
-  // Create and load the Modal
-  $ionicModal.fromTemplateUrl('new-user.html', function(modal) {
-    $scope.userModal = modal;
-  }, {
-    scope: $scope,
-    animation: 'slide-in-up'
-  });
-
   // Called when the form is submitted
   $scope.createUser = auth.createUser;
 
-  console.log('User stored as ', auth.getUser());
+  $scope.checkUser = function() {
+  console.log('User stored as ', auth.getUser()); 
+  }
 
   // Open our new task modal
   $scope.newUser = function() {
@@ -46,7 +40,7 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
 })
 
 // CONTROLLERS
-.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document) {
+.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth) {
   $scope.myActiveSlide = 0;
 
   $scope.slideChanged = function(index) {
@@ -54,5 +48,11 @@ app.controller('SignupCtrl', function($scope, $ionicModal, auth, $q) {
     var increment = $document[0].getElementsByClassName('increment');
     increment[0].style.width = (1+19*index/(slides-1))*5+'%';
   }; 
+
+})
+
+
+.controller('LoginController', function() {
+
 
 })

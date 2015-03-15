@@ -137,11 +137,83 @@ applyForJob: function (jobId, userId, ccFunction) {
         } 
       }
   });
-}
+},
 
+  // An array of user ids
+  getUsersById: function (userIds){
+    var scopeIds = userIds;
+    return $q(function(resolve, reject) {
+      var userIds = scopeIds;
+      userRef.once("value", function(snap) {
+      matchingUsers = [];
+      userArray = snap.val();
+      for (var userHash in userArray){
+        var iteratedUserId = userArray[userHash]["userId"];
+        if (contains(userIds, iteratedUserId)){
+          matchingUsers.push(userArray[userHash]);
+        }
+      }
+      resolve(matchingUsers);
+      });      
+    });
+  },
+
+  // An array of job ids
+  getJobsById: function (jobIds){
+    var scopeIds = jobIds;
+    return $q(function(resolve, reject) {
+      var jobIds = scopeIds;
+      jobRef.once("value", function(snap) {
+        matchingJobs = [];
+        jobArray = snap.val();
+        for (var jobHash in jobArray){
+          var iteratedJobId = jobArray[jobHash]["jobId"];
+          if (contains(jobIds, iteratedJobId)){
+            matchingJobs.push(jobArray[jobHash]);
+          }
+        }
+        resolve(matchingJobs);
+      }); 
+    });      
+  },
+
+  // an array of tags
+  getJobsByTag: function (tags){
+    var tagIds = tags;
+    return $q(function(resolve, reject) {
+      var tags = tagIds;
+      jobRef.once("value", function(snap) {
+        matchingJobs = [];
+        jobArray = snap.val();
+        for (var jobHash in jobArray){
+          var iteratedJobTags = jobArray[jobHash]["tagIds"];
+          if (iteratedJobTags == undefined){
+            continue;
+          }
+          for (var i in tags){
+            if (contains(iteratedJobTags, tags[i])){
+              matchingJobs.push(jobArray[jobHash]);
+              break;
+            }
+          }
+        }
+        resolve(matchingJobs);
+      }); 
+    });      
+  }
 
   };
 });
+
+function contains(a, obj) {
+    var i = a.length;
+    while (i--) {
+       if (a[i] === obj) {
+           return true;
+       }
+    }
+    return false;
+} 
 
  function addTeachingJobToUser(userArray, jobId, creatorUserId){
     console.log(userArray);

@@ -63,7 +63,11 @@ app.controller('MainController', function($scope, $ionicSideMenuDelegate) {
 })
 
 // CONTROLLERS
-app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location) {
+app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $document, auth, $state, $location, FirebaseApi) {
+    FirebaseApi.getJobsByTag(["Gardening", "Fencing"]).then(function(jobs){
+      console.log(jobs);
+    });
+
   $scope.myActiveSlide = 0;
 
   $scope.slideChanged = function(index) {
@@ -79,10 +83,22 @@ app.controller('SlideController', function($scope, $ionicSlideBoxDelegate, $docu
 })
 
 app.controller('FooController', function($scope, FirebaseApi){
+    FirebaseApi.getJobsByTag(["Gardening", "Fencing"]).then(function(jobs){
+      console.log(jobs);
+    });
+    
+    FirebaseApi.getJobsById([502147, 611472, 763081]).then(function(jobs){
+      console.log(jobs);
+    });
+
+    FirebaseApi.getUsersById([224205, 305, 346783]).then(function(users){
+        console.log(users);
+    });
     FirebaseApi.acceptUserForJob(965294, 546046); // accept user 546046 for job id 965294  
     FirebaseApi.getUser("fe@goenu.io").then(function(user) {
+
     FirebaseApi.applyForJob(987125, 224205, printSpotNumber(Object));
-    console.log(user);
+      console.log(user);
     });
     console.log(FirebaseApi.addUser({"firstName" : "John", "lastName" : "Doe", "email" : "johnDoe@gmail.com", "linkedInURL" : "www.linkedin.com/JOhnny"}));
     console.log(FirebaseApi.addJob({"description" : "Build my house for me.", "creatorUserId" : 101, "spotsAvailable" : 5}));

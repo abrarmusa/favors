@@ -17,8 +17,7 @@ angular.module('firebase.api', [])
       var participantRating = 0;
       var teachingJobs = [];
       var participantJobs = [];
-      var tagIds = (jobJson["tagIds"] == undefined) ? [] : jobJson["tagIds"];
-      var userJson = {"userId" : userId , "firstName" : firstName, "lastName" : lastName, "email" : email, "password" : password, "linkedInURL" : linkedInURL, "teachingRating" : teachingRating, "participantRating" : participantRating, "teachingJobs" : teachingJobs, "participantJobs" : participantJobs, "tagIds" : tagIds};
+      var userJson = {"userId" : userId , "firstName" : firstName, "lastName" : lastName, "email" : email, "password" : password, "linkedInURL" : linkedInURL, "teachingRating" : teachingRating, "participantRating" : participantRating, "teachingJobs" : teachingJobs, "participantJobs" : participantJobs};
 
       userRef.push(userJson);
       return userJson;
@@ -31,7 +30,8 @@ angular.module('firebase.api', [])
       var spotsAvailable = (jobJson["spotsAvailable"] == undefined) ? chance.integer({min: 1, max: 5}) : jobJson["spotsAvailable"];
       var spotUserIds = [];
       var pendingSpotIds = [];
-      var jobJson = {"jobId" : jobId , "title" : title, "description" : description, "creatorUserId" : creatorUserId, "spotsAvailable" : spotsAvailable, "spotUserIds" : spotUserIds, "pendingSpotIds" : pendingSpotIds};
+      var tagIds = (jobJson["tagIds"] == undefined) ? [] : jobJson["tagIds"];
+      var jobJson = {"jobId" : jobId , "title" : title, "description" : description, "creatorUserId" : creatorUserId, "spotsAvailable" : spotsAvailable, "spotUserIds" : spotUserIds, "pendingSpotIds" : pendingSpotIds, "tagIds" : tagIds};
   
       jobRef.push(jobJson);
 

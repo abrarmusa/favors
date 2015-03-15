@@ -102,13 +102,20 @@ app.controller('MainJobsController', function($scope, $ionicSideMenuDelegate, $s
       }
 
       var user = auth.getUser();
-      FirebaseApi.addJob({"title" : title ,"description" : description, "creatorUserId" : user.userId, "spotsAvailable" : spotsAvailable, "tagIds" : tags});
-      alert("Your job has been created.");
+      if (user.userId == undefined){
+        alert("You must be logged in to create a job");
+      }
+      else{
+        FirebaseApi.addJob({"title" : title ,"description" : description, "creatorUserId" : user.userId, "spotsAvailable" : spotsAvailable, "tagIds" : tags});
+        alert("Your job has been created.");
+      }
     };
 })
 
 
 app.controller('MainPendingController', function($scope, $ionicSideMenuDelegate, $state, $location, $ionicHistory, auth, FirebaseApi) {
+  $scope.jobs = [];
+  
   $scope.init = function(){
     var user = auth.getUser();
     var jobids = [];

@@ -189,12 +189,10 @@ applyForJob: function (jobId, userId, ccFunction) {
         matchingJobs = [];
         jobArray = snap.val();
         for (var jobHash in jobArray){
-          console.log("1 Searchign for "+tags+" in "+jobHash);
           var iteratedJobTags = jobArray[jobHash]["tagIds"];
           if (iteratedJobTags == undefined){
             continue;
           }
-          console.log("Searchign for "+tags+" in "+jobHash);
           for (var i in tags){
             if (contains(iteratedJobTags, tags[i])){
               matchingJobs.push(jobArray[jobHash]);

@@ -28,7 +28,17 @@ app.controller('MainController', function($scope, $ionicSideMenuDelegate, $state
   }
 })
 
-app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location) {
+function addCardAsync(jobs, $scope, cardTypes){
+  for (var i in jobs){
+    var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+    newCard.id = Math.random();
+    newCard.title = jobs[i]["description"];
+    newCard.spotsAvailable = jobs[i]["spotsAvailable"];
+    $scope.cards.push(angular.extend({}, newCard));
+  }
+}
+
+app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $state, $location, FirebaseApi) {
  var cardTypes = [
     { image: 'img/favorsname.png' },
     { image: 'img/formlogo.png' },
@@ -37,26 +47,22 @@ app.controller('MainCardsController', function($scope, $ionicSideMenuDelegate, $
 
   $scope.cards = [];
 
-  $scope.addCard = function(i) {
-        var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-        newCard.id = Math.random();
-        $scope.cards.push(angular.extend({}, newCard));
-    }
+  FirebaseApi.getJobsByTag(["Beverages", "Bird Watching"]).then(function(jobs){
+    addCardAsync(jobs, $scope, cardTypes);
+  });
  
-    for(var i = 0; i < 3; i++) $scope.addCard();
+  $scope.cardSwipedLeft = function(index) {
+      console.log('Left swipe');
+  }
  
-    $scope.cardSwipedLeft = function(index) {
-        console.log('Left swipe');
-    }
+  $scope.cardSwipedRight = function(index) {
+      console.log('Right swipe');
+  }
  
-    $scope.cardSwipedRight = function(index) {
-        console.log('Right swipe');
-    }
- 
-    $scope.cardDestroyed = function(index) {
-        $scope.cards.splice(index, 1);
-        console.log('Card removed');
-    }
+  $scope.cardDestroyed = function(index) {
+      $scope.cards.splice(index, 1);
+      console.log('Card removed');
+  }
   
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
